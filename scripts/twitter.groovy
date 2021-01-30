@@ -22,7 +22,7 @@ message = ""
 message += "\n"
 message += args[0]
 
-status = new StatusUpdate(message).inReplyToStatusId(1355438500502523906L)
+status = new StatusUpdate(message)
 if( args.length > 1 ){
     def bytes = args[1].toURL().bytes
     status.media "image", new ByteArrayInputStream(bytes)
