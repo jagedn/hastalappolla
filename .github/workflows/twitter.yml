@@ -4,6 +4,11 @@ on:
     # * is a special character in YAML so you have to quote this string
     - cron:  '0 11 * * *'
   workflow_dispatch:
+    inputs:
+      message:
+        description: 'Mensaje'     
+        required: true
+        default: 'Sigo hasta la #PPolla'
 
 jobs:
   check-groovy:
@@ -28,5 +33,5 @@ jobs:
             -Dtwitter4j.oauth.consumerSecret=${CONSUMERSECRET} \
             -Dtwitter4j.oauth.accessToken=${ACCESSTOKEN} \
             -Dtwitter4j.oauth.accessTokenSecret=${ACCESSTOKENSECRET} \
-            scripts/twitter.groovy ${MESSAGE} 
+            scripts/twitter.groovy ${{ github.event.inputs.message || env.MESSAGE }} 
 
