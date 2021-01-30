@@ -33,5 +33,5 @@ jobs:
             -Dtwitter4j.oauth.consumerSecret=${CONSUMERSECRET} \
             -Dtwitter4j.oauth.accessToken=${ACCESSTOKEN} \
             -Dtwitter4j.oauth.accessTokenSecret=${ACCESSTOKENSECRET} \
-            scripts/twitter.groovy ${{ github.event.inputs.message || env.MESSAGE }} 
+            scripts/twitter.groovy "${{ github.event.inputs.message || env.MESSAGE }}"
 
