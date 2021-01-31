@@ -2,7 +2,7 @@ name: twitter
 on:
   schedule:
     # * is a special character in YAML so you have to quote this string
-    - cron:  '0 11 * * *'
+    - cron:  '0 7 * * *'
   workflow_dispatch:
     inputs:
       message:
@@ -19,7 +19,7 @@ jobs:
       CONSUMERSECRET: ${{ secrets.CONSUMERSECRET }}
       ACCESSTOKEN: ${{ secrets.ACCESSTOKEN }}
       ACCESSTOKENSECRET: ${{ secrets.ACCESSTOKENSECRET }}
-      MESSAGE: Sigo hasta la %23PPolla      
+      MESSAGE: Sigo hasta la \#PPolla      
     steps:
       - uses: actions/checkout@v2
       - id: install

@@ -13,10 +13,15 @@ if( args.length < 1){
 today = new Date()
 
 message = ""
-['es-ES', 'en-GB','zh-CN','ru-RU','ar_BH'].each{ l ->
+['es-ES':"Hoy ", 
+ 'en-GB':'Today ', 
+ 'fr-FR': "aujourd'hui ", 
+ 'zh-CN':"今天 ",
+ 'ru-RU':"сегодня "].each{ kv ->
+    String l = kv.key    
     Locale locale = Locale.forLanguageTag(l)
-
-    message += SimpleDateFormat.getDateInstance(SimpleDateFormat.LONG, locale).format(today)
+    
+    message += kv.value+SimpleDateFormat.getDateInstance(SimpleDateFormat.LONG, locale).format(today)
     message += "\n"
 }
 message += "\n"
