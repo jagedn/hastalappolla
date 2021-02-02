@@ -2,13 +2,13 @@ name: twitter
 on:
   schedule:
     # * is a special character in YAML so you have to quote this string
-    - cron:  '0 7 * * *'
+    - cron:  '0 7 * * 1-5'
   workflow_dispatch:
     inputs:
       message:
         description: 'Mensaje'     
         required: true
-        default: 'Sigo hasta la #PPolla'
+        default: 'Venga, vamos que hoy es viernes, salimos a las 3 y no hay paso a produccion'
 
 jobs:
   check-groovy:
