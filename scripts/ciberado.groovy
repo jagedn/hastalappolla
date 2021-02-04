@@ -6,8 +6,11 @@ import java.util.Locale
 import java.text.SimpleDateFormat
 
 
-status = new StatusUpdate("Cada día una magdalena a @ciberado")
-bytes = new File("images/magdalena.gif").bytes
+status = new StatusUpdate("Aquí tienes tu magdalena diaria @ciberado, que aproveche")
+files = new File("images").listFiles()
+rnd = new Random()
+file = files[rnd.nextInt(files.length)]
+bytes = file.bytes
 status.inReplyToStatusId 1356670780554305543L
 status.media "image", new ByteArrayInputStream(bytes)
 println status.status
