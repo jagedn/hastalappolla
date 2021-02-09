@@ -8,7 +8,7 @@ on:
       message:
         description: 'Mensaje'     
         required: true
-        default: 'Venga, vamos que hoy es viernes, salimos a las 3 y no hay paso a produccion'
+        default: 'sigo hasta la #PPolla'
 
 jobs:
   check-groovy:
