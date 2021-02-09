@@ -7,18 +7,23 @@ import twitter4j.StatusUpdate
 import java.util.Locale
 import java.text.SimpleDateFormat
 
-html = "https://es.wikiquote.org/wiki/Portada".toURL().text 
-def slurper = new XmlSlurper(new Parser() )
-def document = slurper.parseText(html)
-quote = document.'**'.find { it['@id'] == 'toc' }.table.tbody.'*'.findAll{ it.name() == 'tr'}.first().text()
-author = document.'**'.find { it['@id'] == 'toc' }.table.tbody.'*'.findAll{ it.name() == 'tr'}.last().td.div.a.text()
-link  = "https://es.wikiquote.org/"+document.'**'.find { it['@id'] == 'toc' }.table.tbody.'*'.findAll{ it.name() == 'tr'}.last().td.div.a['@href']
+html = "https://es.wikiquote.org/wiki/Especial:Aleatoria".toURL().text 
+slurper = new XmlSlurper(new Parser() )
+document = slurper.parseText(html)
+
+canonical = document.'**'.find{ it['@rel']  == 'canonical'}['@href']
+
+quotes = document.'**'.find { it['@class'] == 'mw-parser-output' }.ul
+
+rand = new Random()
+quote = quotes[ rand.nextInt(quotes.size())]
+text = quote.children().first().text().substring(1).split('»').first().take(200)
+
 
 status = new StatusUpdate("""Aquí tienes tu magdalena diaria @ciberado, que aproveche
 
-$quote
-($author $link)
-
+» $text
+($canonical)
 #wikiquote""")
 
 files = new File("images").listFiles()
