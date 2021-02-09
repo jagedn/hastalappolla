@@ -26,8 +26,8 @@ message = ""
 }
 message += "\n"
 message += args[0]
-message += "\n"
-message += today.day % 2 == 0 ? "OLE https://youtu.be/4EIGbQaEIN0" : "MUFASA https://youtu.be/1AnG04qnLqI"
+//message += "\n"
+//message += today.day % 2 == 0 ? "OLE https://youtu.be/4EIGbQaEIN0" : "MUFASA https://youtu.be/1AnG04qnLqI"
 
 status = new StatusUpdate(message)
 if( args.length > 1 ){
