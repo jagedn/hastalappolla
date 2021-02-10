@@ -19,7 +19,7 @@ jobs:
       CONSUMERSECRET: ${{ secrets.CONSUMERSECRET }}
       ACCESSTOKEN: ${{ secrets.ACCESSTOKEN }}
       ACCESSTOKENSECRET: ${{ secrets.ACCESSTOKENSECRET }}
-      MESSAGE: Venga, vamos que hoy es viernes, salimos a las 3 y no hay paso a produccion
+      MESSAGE: sigo hasta la #PPolla
     steps:
       - uses: actions/checkout@v2
       - id: install
