@@ -1,16 +1,35 @@
 @Grab(group='org.twitter4j', module='twitter4j-core', version='4.0.6')
 
+import java.util.Calendar
 import twitter4j.TwitterFactory
 import twitter4j.StatusUpdate
 import java.util.Locale
 import java.text.SimpleDateFormat
 
-if( args.length < 1){
-   println "nasty"
-   return
-}
 
-today = new Date()
+today = Calendar.instance
+
+videos = [
+    "https://youtu.be/4EIGbQaEIN0",
+    "https://youtu.be/1AnG04qnLqI",
+    "https://youtu.be/U_44YUDFvuI",
+    "https://youtu.be/Wm4YqE2XQwM",
+    "https://youtu.be/MVkDDSz_gE4",
+    "https://youtu.be/UDPUPJUumXE",    
+]
+
+losdemarras = "https://youtu.be/Iu1bKskocNQ"
+
+txt = ''
+video = ''
+if( today.get(Calendar.DAY_OF_WEEK) == Calendar.FRIDAY ){
+    txt = 'Hoy sí que es viernes, salimos a las 3 y NO hay paso a producción'
+    video = losdemarras
+}else{
+    txt = "Vale, hoy a lo mejor no es viernes, ni salimos a las 3 pero NO hay paso a producción"
+    rnd = new Random()
+    video = videos[ rnd.nextInt(videos.size()) ]
+}
 
 message = ""
 ['es-ES':"Hoy ", 
@@ -21,13 +40,13 @@ message = ""
     String l = kv.key    
     Locale locale = Locale.forLanguageTag(l)
     
-    message += kv.value+SimpleDateFormat.getDateInstance(SimpleDateFormat.LONG, locale).format(today)
+    message += kv.value+SimpleDateFormat.getDateInstance(SimpleDateFormat.LONG, locale).format(today.time)
     message += "\n"
 }
 message += "\n"
-message += args[0]
-//message += "\n"
-//message += today.day % 2 == 0 ? "OLE https://youtu.be/4EIGbQaEIN0" : "MUFASA https://youtu.be/1AnG04qnLqI"
+message += txt
+message += "\n\n"
+message += video
 
 status = new StatusUpdate(message)
 if( args.length > 1 ){

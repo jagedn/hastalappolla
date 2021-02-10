@@ -19,7 +19,6 @@ jobs:
       CONSUMERSECRET: ${{ secrets.CONSUMERSECRET }}
       ACCESSTOKEN: ${{ secrets.ACCESSTOKEN }}
       ACCESSTOKENSECRET: ${{ secrets.ACCESSTOKENSECRET }}
-      MESSAGE: Sigo hasta la \#PPolla      
     steps:
       - uses: actions/checkout@v2
       - id: install

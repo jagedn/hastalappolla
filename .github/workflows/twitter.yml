@@ -8,7 +8,7 @@ on:
       message:
         description: 'Mensaje'     
         required: true
-        default: 'sigo hasta la #PPolla'
+        default: ''
 
 jobs:
   check-groovy:
@@ -19,7 +19,7 @@ jobs:
       CONSUMERSECRET: ${{ secrets.CONSUMERSECRET }}
       ACCESSTOKEN: ${{ secrets.ACCESSTOKEN }}
       ACCESSTOKENSECRET: ${{ secrets.ACCESSTOKENSECRET }}
-      MESSAGE: sigo hasta la #PPolla
+      MESSAGE: 
     steps:
       - uses: actions/checkout@v2
       - id: install
@@ -33,5 +33,5 @@ jobs:
             -Dtwitter4j.oauth.consumerSecret=${CONSUMERSECRET} \
             -Dtwitter4j.oauth.accessToken=${ACCESSTOKEN} \
             -Dtwitter4j.oauth.accessTokenSecret=${ACCESSTOKENSECRET} \
-            scripts/twitter.groovy "${{ github.event.inputs.message || env.MESSAGE }}"
+            scripts/twitter.groovy 
 
