@@ -17,7 +17,7 @@ quotes = document.'**'.find { it['@class'] == 'mw-parser-output' }.ul
 
 rand = new Random()
 quote = quotes[ rand.nextInt(quotes.size())]
-text = quote.children().first().text().substring(1).split('»').first().take(200)
+text = quote.children().first().text().substring(1).split('»').first().take(150)
 
 
 status = new StatusUpdate("""Aquí tienes tu magdalena diaria @ciberado, que aproveche
