@@ -23,7 +23,7 @@ if( today.get(Calendar.DAY_OF_WEEK) == Calendar.FRIDAY ){
     file = files[rnd.nextInt(files.length)]
     bytes = file.bytes
 
-    txt = "Tremendo mojon tienes por delante"    
+    txt = "No es viernes, no sales a las 3 y tremendo mojon tienes por delante"    
 }
 
 message = ""
