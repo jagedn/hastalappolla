@@ -13,7 +13,7 @@ document = slurper.parseText(html)
 
 canonical = document.'**'.find{ it['@rel']  == 'canonical'}['@href']
 
-quotes = document.'**'.find { it['@class'] == 'mw-parser-output' }.ul
+quotes = document.'**'.find { it['@class'] == 'mw-parser-output' }.ul.findAll{ it.children().first().text().startsWith('«')}
 
 rand = new Random()
 quote = quotes[ rand.nextInt(quotes.size())]
