@@ -1,14 +1,14 @@
-name: twitter
+name: wikiquote
 on:
   schedule:
     # * is a special character in YAML so you have to quote this string
-    - cron:  '0 7 * * 1-5'
+    - cron:  '0 8 * * *'
   workflow_dispatch:
     inputs:
       message:
         description: 'Mensaje'     
         required: true
-        default: ''
+        default: 'nada'
 
 jobs:
   check-groovy:
@@ -19,7 +19,6 @@ jobs:
       CONSUMERSECRET: ${{ secrets.CONSUMERSECRET }}
       ACCESSTOKEN: ${{ secrets.ACCESSTOKEN }}
       ACCESSTOKENSECRET: ${{ secrets.ACCESSTOKENSECRET }}
-      MESSAGE: 
     steps:
       - uses: actions/checkout@v2
       - id: install
@@ -28,10 +27,10 @@ jobs:
           curl -s "https://get.sdkman.io" | bash
           source "$HOME/.sdkman/bin/sdkman-init.sh"
           sdk install groovy $GROOVY_VERSION          
-          echo groovy \
+          groovy \
             -Dtwitter4j.oauth.consumerKey=${CONSUMERKEY} \
             -Dtwitter4j.oauth.consumerSecret=${CONSUMERSECRET} \
             -Dtwitter4j.oauth.accessToken=${ACCESSTOKEN} \
             -Dtwitter4j.oauth.accessTokenSecret=${ACCESSTOKENSECRET} \
-            scripts/twitter.groovy 
+            scripts/wikiquote.groovy 
 

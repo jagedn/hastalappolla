@@ -20,18 +20,10 @@ quote = quotes[ rand.nextInt(quotes.size())]
 text = quote.children().first().text().substring(1).split('»').first().take(150)
 
 
-status = new StatusUpdate("""Aquí tienes tu magdalena diaria @ciberado, que aproveche
-
-» $text
+status = new StatusUpdate("""» $text
 ($canonical)
 #wikiquote""")
 
-files = new File("images").listFiles()
-rnd = new Random()
-file = files[rnd.nextInt(files.length)]
-bytes = file.bytes
-status.inReplyToStatusId 1356670780554305543L
-status.media "image", new ByteArrayInputStream(bytes)
 println status.status
 TwitterFactory.singleton.updateStatus(status)
 
