@@ -2,7 +2,7 @@ name: wikiquote
 on:
   schedule:
     # * is a special character in YAML so you have to quote this string
-    - cron:  '0 8 * * *'
+    - cron:  '0 6 * * *'
   workflow_dispatch:
     inputs:
       message:
@@ -19,6 +19,7 @@ jobs:
       CONSUMERSECRET: ${{ secrets.CONSUMERSECRET }}
       ACCESSTOKEN: ${{ secrets.ACCESSTOKEN }}
       ACCESSTOKENSECRET: ${{ secrets.ACCESSTOKENSECRET }}
+      MASTODON_TOKEN: ${{ secrets.ACCESSTOKENSECRET }}
     steps:
       - uses: actions/checkout@v2
       - id: install
@@ -32,5 +33,6 @@ jobs:
             -Dtwitter4j.oauth.consumerSecret=${CONSUMERSECRET} \
             -Dtwitter4j.oauth.accessToken=${ACCESSTOKEN} \
             -Dtwitter4j.oauth.accessTokenSecret=${ACCESSTOKENSECRET} \
+            -DMASTODON_TOKEN=${MASTODON_TOKEN} \
             scripts/wikiquote.groovy 
 
