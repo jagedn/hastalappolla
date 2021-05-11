@@ -19,7 +19,7 @@ jobs:
       CONSUMERSECRET: ${{ secrets.CONSUMERSECRET }}
       ACCESSTOKEN: ${{ secrets.ACCESSTOKEN }}
       ACCESSTOKENSECRET: ${{ secrets.ACCESSTOKENSECRET }}
-      MASTODON_TOKEN: ${{ secrets.ACCESSTOKENSECRET }}
+      MASTODON_TOKEN: ${{ secrets.MASTODON_TOKEN }}
     steps:
       - uses: actions/checkout@v2
       - id: install
