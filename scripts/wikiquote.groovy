@@ -40,6 +40,8 @@ println canonical
 
 TwitterFactory.singleton.updateStatus(status)
 
+TwitterFactory.singleton.updateProfile(null,null,null,tweet)
+
 http = configure {
     request.uri = 'https://mastodon.madrid'
     request.contentType = 'application/json'
